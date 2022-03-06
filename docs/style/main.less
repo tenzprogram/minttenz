@@ -20,12 +20,19 @@
 
 
 body {
-    font-family: Futura Md BT;
-    background : black;
-    color      : white;
-    margin     : auto;
+    font-family     : Futura Md BT;
+    background-color: black;
+    color           : white;
+    margin          : auto;
 }
 
+@ddd :~"only screen and (max-width: 1512px)";
+
+@media @ddd {
+    body {
+        zoom: 0.5;
+    }
+}
 
 // views
 @import "view/home.less";

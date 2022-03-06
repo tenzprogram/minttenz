@@ -56,7 +56,7 @@ export default class Home implements View {
                                     this.whitelistBalance = el(".info", "0"),
                                 ),
                                 el(".klay-container",
-                                    el("p", "나의 Kaly"),
+                                    el("p", "나의 Klay"),
                                     this.klayBalance = el(".info", "0"),
                                 )
                             ),

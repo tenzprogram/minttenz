@@ -181,14 +181,19 @@ input {
 }
 body {
   font-family: Futura Md BT;
-  background: black;
+  background-color: black;
   color: white;
   margin: auto;
 }
+@media only screen and (max-width: 1512px) {
+  body {
+    zoom: 0.5;
+  }
+}
 .home-view {
   background: no-repeat url("/images/bg.png");
-  max-width: 1512px;
-  height: 100vh;
+  width: 1512px;
+  height: 950px;
   margin: auto;
 }
 .home-view > header {
@@ -231,7 +236,7 @@ body {
 }
 .home-view > main {
   width: 100%;
-  height: 100%;
+  height: 780px;
 }
 .home-view > main > section {
   display: flex;
@@ -280,7 +285,6 @@ body {
 }
 .home-view > main > section > header > .my-container > .klay-container > .info {
   color: #80ffa3;
-  margin-left: 100px;
 }
 .home-view > main > section > article > hr {
   width: 100%;
