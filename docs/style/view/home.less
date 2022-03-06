@@ -1,8 +1,14 @@
 .home-view {
-    background: no-repeat url("/images/bg.png");
-    width     : 1512px;
-    height    : 950px;
-    margin    : auto;
+    background         : no-repeat url("/images/bg.png");
+    background-size    : cover;
+    background-position: center;
+    margin             : auto;
+    min-height         : 100vh;
+
+    @media @phone {
+        background     : no-repeat url("/images/mobile-bg.png");
+        background-size: cover;
+    }
 
     >header {
         display        : flex;
@@ -11,9 +17,20 @@
         justify-content: space-between;
         width          : 100%;
 
+        @media @phone {
+            flex-direction : column;
+            justify-content: center;
+            align-items    : center;
+        }
+
         >.logo {
             width : 340px;
             height: 90px;
+
+
+            @media @phone {
+                margin-bottom: 32px;
+            }
         }
 
         >.right {
@@ -65,6 +82,13 @@
             margin-right  : 77px;
             padding       : 60px 70px;
 
+            @media @phone {
+                margin         : 20px;
+                flex-direction : column;
+                justify-content: center;
+                align-items    : center;
+            }
+
             >header {
                 display        : flex;
                 justify-content: space-between;
@@ -74,8 +98,18 @@
                 font-weight    : 500;
                 font-size      : 40px;
 
+                @media @phone {
+                    justify-content: center;
+                    flex-direction : column;
+                }
+
                 >.price-container {
                     display: flex;
+
+                    @media @phone {
+                        justify-content: center;
+                        margin-bottom  : 16px;
+                    }
 
                     >.price {
                         color : #80FFA3;
@@ -113,6 +147,8 @@
             }
 
             >article {
+                width: 100%;
+
                 >hr {
                     width        : 100%;
                     border       : 1px solid rgba(255, 255, 255, 0.3);
@@ -151,7 +187,6 @@
                         margin-bottom: 22px;
                         padding      : 1px;
                         width        : 100%;
-                        max-width    : 790px;
                         height       : 40px;
                         background   : #102457;
                         border       : 1px solid #80FFA3;
@@ -188,6 +223,11 @@
                     align-items    : center;
                     margin-top     : 42px;
 
+                    @media @phone {
+                        justify-content: center;
+                        flex-direction : column;
+                    }
+
                     >.text-container {
                         display    : flex;
                         font-family: Futura;
@@ -209,8 +249,11 @@
                         font-style   : normal;
                         font-weight  : bold;
                         font-size    : 40px;
+                        color        : black;
 
-                        color: black;
+                        @media @phone {
+                            margin-top: 32px;
+                        }
 
                         &:hover {
                             background: rgba(128, 255, 163, 0.95);

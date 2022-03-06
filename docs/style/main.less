@@ -19,18 +19,21 @@
 }
 
 
+html,
 body {
     font-family     : Futura Md BT;
     background-color: black;
     color           : white;
     margin          : auto;
+    height          : 100%;
 }
 
-@ddd :~"only screen and (max-width: 1512px)";
+@fixed :~"only screen and (max-width: 1512px)";
 
-@media @ddd {
+@media @fixed {
     body {
-        zoom: 0.75;
+        zoom  : 0.5;
+        height: 100%;
     }
 }
 
