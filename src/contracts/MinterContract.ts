@@ -36,21 +36,26 @@ class MinterContract extends Contract {
     }
 
     public async mint(count: number): Promise<void> {
-        const amount = (await this.amount()).toNumber();
-        if (amount === 0) {
+        const step = (await this.step()).toNumber();
+        if (step === 0) {
             alert("현재 민팅 진행중이 아닙니다. 민팅은 3월 10일 밤 9시부터 시작됩니다.");
-        } else if (count > amount) {
-            alert(`남은 개수는 ${amount}개입니다.`);
         } else {
-            const price = (await this.calculatedPrice()).mul(count);
-            const address = await Wallet.loadAddress();
-            if (address !== undefined) {
-                const balance = await Klaytn.balanceOf(address);
-                if (balance === undefined || balance.lt(price)) {
-                    alert("Klay가 부족합니다.");
-                } else {
-                    await this.runWalletMethodWithValue(price, "mint", count);
-                    alert("축하합니다! 민팅에 성공하셨습니다!");
+            const amount = (await this.amount()).toNumber();
+            if (amount === 0) {
+                alert("현재 민팅 진행중이 아닙니다.");
+            } else if (count > amount) {
+                alert(`남은 개수는 ${amount}개입니다.`);
+            } else {
+                const price = (await this.calculatedPrice()).mul(count);
+                const address = await Wallet.loadAddress();
+                if (address !== undefined) {
+                    const balance = await Klaytn.balanceOf(address);
+                    if (balance === undefined || balance.lt(price)) {
+                        alert("Klay가 부족합니다.");
+                    } else {
+                        await this.runWalletMethodWithValue(price, "mint", count);
+                        alert("축하합니다! 민팅에 성공하셨습니다!");
+                    }
                 }
             }
         }

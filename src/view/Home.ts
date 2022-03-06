@@ -101,7 +101,11 @@ export default class Home implements View {
                                     el(".info", "1"),
                                     el("p", "개"),
                                 ),
-                                el("button", "MINT"),
+                                el("button", "MINT", {
+                                    click: async () => {
+                                        await MinterContract.mint(1);
+                                    },
+                                }),
                             ),
                         ),
                     ),
@@ -111,6 +115,7 @@ export default class Home implements View {
 
         Wallet.on("connect", () => this.loadBalance());
         this.interval = setInterval(() => this.progress(), 1000);
+        this.progress();
     }
 
     private async loadBalance() {
