@@ -1,0 +1,224 @@
+.home-view {
+    background: no-repeat url("/images/bg.png");
+    max-width : 1512px;
+    height    : 100vh;
+    margin    : auto;
+
+    >header {
+        display        : flex;
+        padding-top    : 50px;
+        margin-bottom  : 35px;
+        justify-content: space-between;
+        width          : 100%;
+
+        >.logo {
+            width : 340px;
+            height: 90px;
+        }
+
+        >.right {
+            display: flex;
+
+            >.sns {
+                >a {
+                    >img {
+                        max-width   : 65px;
+                        max-height  : 65px;
+                        margin-right: 26px;
+                    }
+                }
+            }
+
+            >.address-container {
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                border-radius   : 30px;
+                height          : 60px;
+                font-weight     : bold;
+                font-size       : 22px;
+                line-height     : 29px;
+                margin-right    : 77px;
+                padding         : 0px 33px;
+                background-color: white;
+                color           : black;
+
+                >img {
+                    width       : 32px;
+                    height      : 32px;
+                    margin-right: 20px;
+                }
+            }
+        }
+    }
+
+    >main {
+        width : 100%;
+        height: 100%;
+
+        >section {
+            display       : flex;
+            flex-direction: column;
+            background    : rgba(30, 68, 166, 0.95);
+            border-radius : 30px;
+            margin-left   : 500px;
+            margin-right  : 77px;
+            padding       : 60px 70px;
+
+            >header {
+                display        : flex;
+                justify-content: space-between;
+                width          : 100%;
+                font-family    : Futura;
+                font-style     : normal;
+                font-weight    : 500;
+                font-size      : 40px;
+
+                >.price-container {
+                    display: flex;
+
+                    >.price {
+                        color : #80FFA3;
+                        margin: 0px 16px;
+                    }
+                }
+
+                >.my-container {
+                    display       : flex;
+                    flex-direction: column;
+                    text-align    : left;
+
+                    >.whitelist-container {
+                        display        : flex;
+                        justify-content: space-between;
+                        font-size      : 32px;
+                        padding-bottom : 11px;
+
+                        >.info {
+                            color      : rgba(128, 255, 163, 1);
+                            margin-left: 100px;
+                        }
+                    }
+
+                    >.klay-container {
+                        display        : flex;
+                        font-size      : 32px;
+                        justify-content: space-between;
+
+                        >.info {
+                            color      : rgba(128, 255, 163, 1);
+                            margin-left: 100px;
+                        }
+                    }
+                }
+            }
+
+            >article {
+                >hr {
+                    width        : 100%;
+                    border       : 1px solid rgba(255, 255, 255, 0.3);
+                    margin       : 50px 0px 37px 0px;
+                    border-radius: 30px;
+                }
+
+                >.amount-container {
+                    display        : flex;
+                    justify-content: space-between;
+                    margin-bottom  : 8px;
+
+                    >p {
+                        font-family: Futura;
+                        font-style : normal;
+                        font-weight: 500;
+                        font-size  : 35px;
+                        line-height: 46px;
+                    }
+
+                    >.info {
+                        font-family: Futura;
+                        font-style : normal;
+                        font-weight: 500;
+                        font-size  : 35px;
+                        line-height: 46px;
+                        text-align : right;
+
+                        color: #80FFA3;
+                    }
+                }
+
+                >.progress-container {
+                    >.progress {
+                        margin-top   : 40px;
+                        margin-bottom: 22px;
+                        padding      : 1px;
+                        width        : 100%;
+                        max-width    : 790px;
+                        height       : 40px;
+                        background   : #102457;
+                        border       : 1px solid #80FFA3;
+                        box-sizing   : border-box;
+                        border-radius: 20px;
+
+                        >.progress__bar {
+                            height       : 100%;
+                            width        : 0%;
+                            background   : #80FFA3;
+                            border-radius: 30px;
+                        }
+                    }
+
+                    >.status-container {
+                        display        : flex;
+                        justify-content: space-around;
+                        font-family    : Futura;
+                        font-style     : normal;
+                        font-weight    : 500;
+                        font-size      : 26px;
+                        line-height    : 35px;
+
+                        >.vertical-hr {
+                            border       : 1px solid rgba(255, 255, 255, 0.3);
+                            border-radius: 30px;
+                        }
+                    }
+                }
+
+                >.action-container {
+                    display        : flex;
+                    justify-content: space-between;
+                    align-items    : center;
+                    margin-top     : 42px;
+
+                    >.text-container {
+                        display    : flex;
+                        font-family: Futura;
+                        font-style : normal;
+                        font-weight: 500;
+                        font-size  : 40px;
+
+                        >.info {
+                            margin: 0px 16px 0px 32px;
+                            color : #80FFA3;
+                        }
+                    }
+
+                    >button {
+                        background   : #80FFA3;
+                        border-radius: 30px;
+                        padding      : 24px 160px;
+                        font-family  : Futura;
+                        font-style   : normal;
+                        font-weight  : bold;
+                        font-size    : 40px;
+
+                        color: black;
+
+                        &:hover {
+                            background: rgba(128, 255, 163, 0.95);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

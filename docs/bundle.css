@@ -1,0 +1,373 @@
+/*
+https://github.com/Hanul/sky-css-base
+v0.0.1 | 20210109
+Author: Sim Young Jae
+License: MIT
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+*,
+*:focus {
+  outline: 0;
+}
+html {
+  -webkit-tap-highlight-color: transparent;
+}
+a,
+button,
+input[type=button],
+input[type=submit],
+input[type=reset] {
+  cursor: pointer;
+}
+button,
+input {
+  border: none;
+}
+[hidden] {
+  display: none !important;
+}
+[contenteditable] {
+  -webkit-tap-highlight-color: transparent;
+}
+.float-wrapper:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+@font-face {
+  font-family: 'Futura Md BT';
+  src: url('/font/FuturaBT-Medium.woff2') format('woff2'), url('/font/FuturaBT-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Futura Md BT';
+  src: url('/font/FuturaBT-Bold.woff2') format('woff2'), url('/font/FuturaBT-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: Futura Md BT;
+  background: black;
+  color: white;
+  margin: auto;
+}
+.home-view {
+  background: no-repeat url("/images/bg.png");
+  max-width: 1512px;
+  height: 100vh;
+  margin: auto;
+}
+.home-view > header {
+  display: flex;
+  padding-top: 50px;
+  margin-bottom: 35px;
+  justify-content: space-between;
+  width: 100%;
+}
+.home-view > header > .logo {
+  width: 340px;
+  height: 90px;
+}
+.home-view > header > .right {
+  display: flex;
+}
+.home-view > header > .right > .sns > a > img {
+  max-width: 65px;
+  max-height: 65px;
+  margin-right: 26px;
+}
+.home-view > header > .right > .address-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  height: 60px;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 29px;
+  margin-right: 77px;
+  padding: 0px 33px;
+  background-color: white;
+  color: black;
+}
+.home-view > header > .right > .address-container > img {
+  width: 32px;
+  height: 32px;
+  margin-right: 20px;
+}
+.home-view > main {
+  width: 100%;
+  height: 100%;
+}
+.home-view > main > section {
+  display: flex;
+  flex-direction: column;
+  background: rgba(30, 68, 166, 0.95);
+  border-radius: 30px;
+  margin-left: 500px;
+  margin-right: 77px;
+  padding: 60px 70px;
+}
+.home-view > main > section > header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+}
+.home-view > main > section > header > .price-container {
+  display: flex;
+}
+.home-view > main > section > header > .price-container > .price {
+  color: #80FFA3;
+  margin: 0px 16px;
+}
+.home-view > main > section > header > .my-container {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.home-view > main > section > header > .my-container > .whitelist-container {
+  display: flex;
+  justify-content: space-between;
+  font-size: 32px;
+  padding-bottom: 11px;
+}
+.home-view > main > section > header > .my-container > .whitelist-container > .info {
+  color: #80ffa3;
+  margin-left: 100px;
+}
+.home-view > main > section > header > .my-container > .klay-container {
+  display: flex;
+  font-size: 32px;
+  justify-content: space-between;
+}
+.home-view > main > section > header > .my-container > .klay-container > .info {
+  color: #80ffa3;
+  margin-left: 100px;
+}
+.home-view > main > section > article > hr {
+  width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  margin: 50px 0px 37px 0px;
+  border-radius: 30px;
+}
+.home-view > main > section > article > .amount-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.home-view > main > section > article > .amount-container > p {
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 46px;
+}
+.home-view > main > section > article > .amount-container > .info {
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 46px;
+  text-align: right;
+  color: #80FFA3;
+}
+.home-view > main > section > article > .progress-container > .progress {
+  margin-top: 40px;
+  margin-bottom: 22px;
+  padding: 1px;
+  width: 100%;
+  max-width: 790px;
+  height: 40px;
+  background: #102457;
+  border: 1px solid #80FFA3;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+.home-view > main > section > article > .progress-container > .progress > .progress__bar {
+  height: 100%;
+  width: 0%;
+  background: #80FFA3;
+  border-radius: 30px;
+}
+.home-view > main > section > article > .progress-container > .status-container {
+  display: flex;
+  justify-content: space-around;
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 35px;
+}
+.home-view > main > section > article > .progress-container > .status-container > .vertical-hr {
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+}
+.home-view > main > section > article > .action-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 42px;
+}
+.home-view > main > section > article > .action-container > .text-container {
+  display: flex;
+  font-family: Futura;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 40px;
+}
+.home-view > main > section > article > .action-container > .text-container > .info {
+  margin: 0px 16px 0px 32px;
+  color: #80FFA3;
+}
+.home-view > main > section > article > .action-container > button {
+  background: #80FFA3;
+  border-radius: 30px;
+  padding: 24px 160px;
+  font-family: Futura;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  color: black;
+}
+.home-view > main > section > article > .action-container > button:hover {
+  background: rgba(128, 255, 163, 0.95);
+}
+
