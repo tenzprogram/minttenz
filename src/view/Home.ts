@@ -31,9 +31,17 @@ export default class Home implements View {
                         el(".sns",
                             el("a",
                                 el("img", { src: "/images/icn/opensea.png", alt: "opensea" }),
+                                {
+                                    href: "https://opensea.io/collection/tenzofficial",
+                                    target: "_blank",
+                                },
                             ),
                             el("a",
                                 el("img", { src: "/images/icn/linktree.png", alt: "linktree" }),
+                                {
+                                    href: "https://linktr.ee/luckytenz",
+                                    target: "_blank",
+                                },
                             ),
                         ),
                         el(".address-container",
