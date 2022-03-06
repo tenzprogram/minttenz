@@ -65,7 +65,7 @@ export default class Home implements View {
                             el("hr"),
                             el(".amount-container",
                                 el("p", "판매된 수량 / 총 판매 수량"),
-                                el(".info", `${this.MINT_COUNT} / ${this.TODAY_COUNT}`),
+                                this.mintCount = el(".info", `${this.MINT_COUNT} / ${this.TODAY_COUNT}`),
                             ),
                             el(".amount-container",
                                 el("p", "남은수량"),

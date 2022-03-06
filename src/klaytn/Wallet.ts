@@ -1,8 +1,5 @@
-import { BigNumber } from "@ethersproject/bignumber";
 import EventContainer from "eventcontainer";
-import ConnectWalletPopup from "../component/ConnectWalletPopup";
 import ExtWallet from "./ExtWallet";
-import Klip from "./Klip";
 
 class Wallet extends EventContainer {
 
@@ -11,7 +8,6 @@ class Wallet extends EventContainer {
         this.checkConnected();
 
         ExtWallet.toss("connect", this);
-        Klip.toss("connect", this);
     }
 
     private async checkConnected() {
@@ -23,8 +19,6 @@ class Wallet extends EventContainer {
     public async loadAddress(): Promise<string | undefined> {
         if (ExtWallet.installed === true) {
             return await ExtWallet.loadAddress();
-        } else {
-            return Klip.address;
         }
     }
 
@@ -36,7 +30,7 @@ class Wallet extends EventContainer {
         if (ExtWallet.installed === true) {
             return await ExtWallet.connect();
         } else {
-            return new Promise<void>((resolve) => new ConnectWalletPopup(resolve));
+            alert("민팅에는 Kaikas가 필요합니다.");
         }
     }
 }
