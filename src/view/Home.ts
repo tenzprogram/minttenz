@@ -2,23 +2,24 @@ import { BodyNode, DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import { View, ViewParams } from "skyrouter";
 import CommonUtil from "../CommonUtil";
+import MinterContract from "../contracts/MinterContract";
 import Klaytn from "../klaytn/Klaytn";
 import Wallet from "../klaytn/Wallet";
 
 export default class Home implements View {
+
     private TODAY_COUNT = 9500;
-    private MINT_COUNT = 9500;
 
     private container: DomNode;
     private interval: any;
 
     private walletAddress: DomNode;
+    private priceDisplay: DomNode;
     private klayBalance: DomNode;
     private whitelistBalance: DomNode;
     private mintCount: DomNode;
+    private remainsCount: DomNode;
     private bar: DomNode;
-
-    private remainCount: number = 0;
 
     constructor() {
         document.title = "TENZ";
@@ -55,13 +56,13 @@ export default class Home implements View {
                         el("header",
                             el(".price-container",
                                 el("p", "판매가격"),
-                                el(".price", "250"),
+                                this.priceDisplay = el(".price", "..."),
                                 el("p", "Klay"),
                             ),
                             el(".my-container",
                                 el(".whitelist-container",
                                     el("p", "나의 화이트리스트"),
-                                    this.whitelistBalance = el(".info", "0"),
+                                    this.whitelistBalance = el(".info", "..."),
                                 ),
                                 el(".klay-container",
                                     el("p", "나의 Klay"),
@@ -73,11 +74,11 @@ export default class Home implements View {
                             el("hr"),
                             el(".amount-container",
                                 el("p", "판매된 수량 / 총 판매 수량"),
-                                this.mintCount = el(".info", `${this.MINT_COUNT} / ${this.TODAY_COUNT}`),
+                                this.mintCount = el(".info", `... / ${this.TODAY_COUNT}`),
                             ),
                             el(".amount-container",
                                 el("p", "남은수량"),
-                                el(".info", `${this.remainCount}`),
+                                this.remainsCount = el(".info", "..."),
                             ),
                             el(".progress-container",
                                 el(".progress",
@@ -117,6 +118,9 @@ export default class Home implements View {
         if (address !== undefined) {
             this.walletAddress.empty().appendText(CommonUtil.shortenAddress(address));
 
+            const price = await MinterContract.calculatedPrice();
+            this.priceDisplay.empty().appendText(String(parseInt(utils.formatEther(price), 10)));
+
             const balance = await Klaytn.balanceOf(address);
             let balanceDisplay = utils.formatEther(balance!)
             balanceDisplay = (+balanceDisplay).toFixed(4);
@@ -130,9 +134,12 @@ export default class Home implements View {
     private async progress() {
         this.loadBalance();
 
-        const d = 0;
+        const remains = (await MinterContract.amount()).toNumber();
+        this.remainsCount.empty().appendText(String(remains));
+
+        const d = this.TODAY_COUNT - remains > this.TODAY_COUNT ? this.TODAY_COUNT : this.TODAY_COUNT - remains;
         this.bar.style({ width: `${d / this.TODAY_COUNT * 100}%` });
-        this.mintCount.empty().appendText(`${d}/${this.TODAY_COUNT}`);
+        this.mintCount.empty().appendText(`${d} / ${this.TODAY_COUNT}`);
     }
 
     public changeParams(params: ViewParams, uri: string): void { }
