@@ -1,6 +1,7 @@
 import { BodyNode, DomNode, el } from "@hanul/skynode";
 import { utils } from "ethers";
 import { View, ViewParams } from "skyrouter";
+import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import MinterContract from "../contracts/MinterContract";
 import Klaytn from "../klaytn/Klaytn";
@@ -20,6 +21,8 @@ export default class Home implements View {
     private mintCount: DomNode;
     private remainsCount: DomNode;
     private bar: DomNode;
+
+    private _minterContract = new MinterContract("0x4c36eD7Fd318163B19b23d136faCaA01970bE885");
 
     constructor() {
         document.title = "TENZ";
@@ -103,7 +106,7 @@ export default class Home implements View {
                                 ),
                                 el("button", "MINT", {
                                     click: async () => {
-                                        await MinterContract.mint(1);
+                                        await (await this.getMinterContract()).mint(1);
                                     },
                                 }),
                             ),
@@ -118,12 +121,18 @@ export default class Home implements View {
         this.progress();
     }
 
+    private async getMinterContract() {
+        const addr = (await superagent.get("https://api.minttenz.com/mintercontract")).text;
+        this._minterContract = new MinterContract(addr);
+        return this._minterContract;
+    }
+
     private async loadBalance() {
         const address = await Wallet.loadAddress();
         if (address !== undefined) {
             this.walletAddress.empty().appendText(CommonUtil.shortenAddress(address));
 
-            const price = await MinterContract.calculatedPrice();
+            const price = await (await this.getMinterContract()).calculatedPrice();
             this.priceDisplay.empty().appendText(String(parseInt(utils.formatEther(price), 10)));
 
             const balance = await Klaytn.balanceOf(address);
@@ -139,7 +148,7 @@ export default class Home implements View {
     private async progress() {
         this.loadBalance();
 
-        const remains = (await MinterContract.amount()).toNumber();
+        const remains = (await (await this.getMinterContract()).amount()).toNumber();
         this.remainsCount.empty().appendText(String(remains));
 
         const d = this.TODAY_COUNT - remains > this.TODAY_COUNT ? this.TODAY_COUNT : this.TODAY_COUNT - remains;

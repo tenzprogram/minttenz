@@ -10,7 +10,9 @@ export default class Home implements View {
     private mintCount;
     private remainsCount;
     private bar;
+    private _minterContract;
     constructor();
+    private getMinterContract;
     private loadBalance;
     private progress;
     changeParams(params: ViewParams, uri: string): void;

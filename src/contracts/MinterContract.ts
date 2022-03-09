@@ -4,10 +4,10 @@ import Wallet from "../klaytn/Wallet";
 import TenzMinterArtifact from "./abi/artifacts/contracts/TenzMinter.sol/TenzMinter.json";
 import Contract from "./Contract";
 
-class MinterContract extends Contract {
+export default class MinterContract extends Contract {
 
-    constructor() {
-        super("0xA94805216D215892AA8645c52197bf56B84923Bf", TenzMinterArtifact.abi);
+    constructor(addr: string) {
+        super(addr, TenzMinterArtifact.abi);
     }
 
     public async wlprice(): Promise<BigNumber> {
@@ -61,5 +61,3 @@ class MinterContract extends Contract {
         }
     }
 }
-
-export default new MinterContract();
