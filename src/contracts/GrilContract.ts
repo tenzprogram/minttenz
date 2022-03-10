@@ -5,7 +5,7 @@ import KIP17Contract from "./standard/KIP17Contract";
 class GrilContract extends KIP17Contract {
 
     constructor() {
-        super("0x3f635476023A6422478cF288ECAEb3fDCf025e9F", TenzArtifact.abi);
+        super("0xd3592019ff29ba3f8aa7d73518c1f8e3c8ca0b48", TenzArtifact.abi);
     }
 
     public async totalSupply(): Promise<BigNumber> {

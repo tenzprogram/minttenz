@@ -23,7 +23,7 @@ export default class Home implements View {
     private remainsCount: DomNode;
     private bar: DomNode;
 
-    private _minterContract = new MinterContract("0x4c36eD7Fd318163B19b23d136faCaA01970bE885");
+    private _minterContract = new MinterContract("0xA94805216D215892AA8645c52197bf56B84923Bf");
 
     constructor() {
         document.title = "TENZ";
@@ -123,8 +123,6 @@ export default class Home implements View {
     }
 
     private async getMinterContract() {
-        const addr = (await superagent.get("https://api.minttenz.com/mintercontract")).text;
-        this._minterContract = new MinterContract(addr);
         return this._minterContract;
     }
 
