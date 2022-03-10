@@ -50,9 +50,9 @@ export default class MinterContract extends Contract {
         } else {
             const amount = (await this.amount()).toNumber();
             if (amount === 0) {
-                alert("현재 민팅 진행중이 아닙니다.");
+                alert("현재 Round에 해당하는 물량이 모두 소진됐습니다.");
             } else if (count > amount) {
-                alert(`남은 개수는 ${amount}개입니다.`);
+                alert(`현재 Round에서 남은 개수는 ${amount}개입니다.`);
             } else {
                 const price = (await this.calculatedPrice()).mul(count);
                 const address = await Wallet.loadAddress();
@@ -74,7 +74,7 @@ export default class MinterContract extends Contract {
                         step === 3 &&
                         (await this.whitelist3(address)).eq(0)
                     ) {
-                        alert("화리권이 없습니다.");
+                        alert("더 이상 화리권이 없습니다.");
                     }
 
                     else {
