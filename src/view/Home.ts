@@ -143,7 +143,7 @@ export default class Home implements View {
             balanceDisplay = (+balanceDisplay).toFixed(4);
             this.klayBalance.empty().appendText(balanceDisplay);
 
-            const whitelist = await minterContract.whitelist3(address);
+            const whitelist = (await superagent.get(`https://api.minttenz.com/wl/${address}`)).body.wl;
             this.whitelistBalance.empty().appendText(`${whitelist}`)
         }
     }
