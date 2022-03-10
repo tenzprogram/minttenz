@@ -18,6 +18,10 @@ export default class MinterContract extends Contract {
         return BigNumber.from(await this.runMethod("price"));
     }
 
+    public async whitelist3(user: string): Promise<BigNumber> {
+        return BigNumber.from(await this.runMethod("whitelist3", user));
+    }
+
     public async calculatedPrice(): Promise<BigNumber> {
         const step = (await this.step()).toNumber();
         if (step < 4) {

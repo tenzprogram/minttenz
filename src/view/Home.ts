@@ -4,6 +4,7 @@ import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import CommonUtil from "../CommonUtil";
 import MinterContract from "../contracts/MinterContract";
+import TenzContract from "../contracts/TenzContract";
 import Klaytn from "../klaytn/Klaytn";
 import Wallet from "../klaytn/Wallet";
 
@@ -132,7 +133,9 @@ export default class Home implements View {
         if (address !== undefined) {
             this.walletAddress.empty().appendText(CommonUtil.shortenAddress(address));
 
-            const price = await (await this.getMinterContract()).calculatedPrice();
+            const minterContract = await this.getMinterContract();
+
+            const price = await minterContract.calculatedPrice();
             this.priceDisplay.empty().appendText(String(parseInt(utils.formatEther(price), 10)));
 
             const balance = await Klaytn.balanceOf(address);
@@ -140,7 +143,7 @@ export default class Home implements View {
             balanceDisplay = (+balanceDisplay).toFixed(4);
             this.klayBalance.empty().appendText(balanceDisplay);
 
-            const whitelist = 0;
+            const whitelist = await minterContract.whitelist3(address);
             this.whitelistBalance.empty().appendText(`${whitelist}`)
         }
     }
@@ -148,7 +151,7 @@ export default class Home implements View {
     private async progress() {
         this.loadBalance();
 
-        const remains = (await (await this.getMinterContract()).amount()).toNumber();
+        const remains = this.TODAY_COUNT + 500 - (await TenzContract.totalSupply()).toNumber();
         this.remainsCount.empty().appendText(String(remains));
 
         const d = this.TODAY_COUNT - remains > this.TODAY_COUNT ? this.TODAY_COUNT : this.TODAY_COUNT - remains;

@@ -4,6 +4,7 @@ export default class MinterContract extends Contract {
     constructor(addr: string);
     wlprice(): Promise<BigNumber>;
     price(): Promise<BigNumber>;
+    whitelist3(user: string): Promise<BigNumber>;
     calculatedPrice(): Promise<BigNumber>;
     step(): Promise<BigNumber>;
     amount(): Promise<BigNumber>;
